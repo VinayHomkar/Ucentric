@@ -1,53 +1,57 @@
-import React, { useState } from 'react';
-import { motion as Motion } from 'framer-Motion';
-import assets from '../assets/assets';
-import toast from 'react-hot-toast';
+import React, { useState } from "react";
+import { motion as Motion } from "framer-motion";
+import assets from "../assets/assets";
+import toast from "react-hot-toast";
 
 const Footer = () => {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     if (!email) {
-      toast.error('Please enter your email.');
+      toast.error("Please enter your email.");
       return;
     }
-    
+
     setIsSubmitting(true);
 
     const formData = new FormData();
     formData.append("email", email);
-    formData.append("access_key", import.meta.env.VITE_WEB3FORMS_ACCESS_KEY); 
+    formData.append("access_key", import.meta.env.VITE_WEB3FORMS_ACCESS_KEY);
     formData.append("subject", "New Newsletter Subscription from Ucentric");
     formData.append("from_name", "Ucentric Newsletter");
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        body: formData
+        body: formData,
       });
 
       const data = await response.json();
 
       if (data.success) {
-        toast.success('You have successfully subscribed to Ucentric newsletter!');
-        setEmail(''); 
+        toast.success(
+          "You have successfully subscribed to Ucentric newsletter!"
+        );
+        setEmail("");
       } else {
-        toast.error(data.message || 'An error occurred.');
+        toast.error(data.message || "An error occurred.");
       }
     } catch {
-      toast.error('An error occurred while submitting.');
+      toast.error("An error occurred while submitting.");
     } finally {
       setIsSubmitting(false);
     }
   };
 
   // ★★★ FIX: This is the correct way to make a Google Maps link ★★★
-  const address = "#20133, SDA, Balegere - Panathur Main Road, Varthuru, Bengaluru, Karnataka - 560087";
+  const address =
+    "#20133, SDA, Balegere - Panathur Main Road, Varthuru, Bengaluru, Karnataka - 560087";
   // The correct URL structure for a Google Maps search query:
-  const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
-
+  const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+    address
+  )}`;
 
   return (
     <Motion.footer
@@ -60,7 +64,6 @@ const Footer = () => {
       <div className="container mx-auto">
         {/* Top section: 4-column layout (Already responsive) */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 lg:gap-8 mb-12">
-
           {/* Column 1: Logo, Description, Socials */}
           <Motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -71,55 +74,63 @@ const Footer = () => {
             <div className="w-32 sm:w-44 h-[40px] flex items-center">
               <img
                 src={assets.logo}
-                style={{ width: '90px', height: 'auto' }}
+                style={{ width: "90px", height: "auto" }}
                 className=""
                 alt="logo"
               />
             </div>
 
             <p className="mt-4 text-sm leading-relaxed max-w-xs">
-              At Ucentric, we blend creativity and technology to turn ideas into impactful digital realities. Whether you’re a student, influencer, or brand, we help you stand out online through stunning portfolios, websites, and apps tailored for your goals.
+              At Ucentric, we blend creativity and technology to turn ideas into
+              impactful digital realities. Whether you’re a student, influencer,
+              or brand, we help you stand out online through stunning
+              portfolios, websites, and apps tailored for your goals.
             </p>
 
             {/* Social Icons */}
             <div className="flex flex-wrap items-center gap-4 mt-6">
-              <a 
-                href="https://www.instagram.com/ucentric.official/?hl=en" 
-                aria-label="Instagram" 
+              <a
+                href="https://www.instagram.com/ucentric.official/?hl=en"
+                aria-label="Instagram"
                 className="text-gray-400 hover:text-[#E1306C] transition-transform hover:scale-110"
-                target="_blank" rel="noopener noreferrer"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <i className="fab fa-instagram text-2xl"></i>
               </a>
-              <a 
-                href="https://x.com/Ucentric187302" 
-                aria-label="Twitter" 
+              <a
+                href="https://x.com/Ucentric187302"
+                aria-label="Twitter"
                 className="text-gray-400 hover:text-[#1DA1F2] transition-transform hover:scale-110"
-                target="_blank" rel="noopener noreferrer"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <i className="fab fa-twitter text-2xl"></i>
               </a>
-              <a 
-                href="https://www.linkedin.com/company/ucentric-official/about/?viewAsMember=true" 
-                aria-label="LinkedIn" 
+              <a
+                href="https://www.linkedin.com/company/ucentric-official/about/?viewAsMember=true"
+                aria-label="LinkedIn"
                 className="text-gray-400 hover:text-[#0A66C2] transition-transform hover:scale-110"
-                target="_blank" rel="noopener noreferrer"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <i className="fab fa-linkedin text-2xl"></i>
               </a>
-              <a 
-                href="https://wa.me/917406167017" 
-                aria-label="WhatsApp" 
+              <a
+                href="https://wa.me/917406167017"
+                aria-label="WhatsApp"
                 className="text-gray-400 hover:text-[#25D366] transition-transform hover:scale-110"
-                target="_blank" rel="noopener noreferrer"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <i className="fab fa-whatsapp text-2xl"></i>
               </a>
-              <a 
-                href="https://www.youtube.com/channel/UCfg9pKJ96unw-wdNIyUipKA" 
-                aria-label="YouTube" 
+              <a
+                href="https://www.youtube.com/channel/UCfg9pKJ96unw-wdNIyUipKA"
+                aria-label="YouTube"
                 className="text-gray-400 hover:text-[#FF0000] transition-transform hover:scale-110"
-                target="_blank" rel="noopener noreferrer"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <i className="fab fa-youtube text-2xl"></i>
               </a>
@@ -134,12 +145,33 @@ const Footer = () => {
             viewport={{ once: true }}
             className="md:col-span-1 md:pl-12 sm:pl-0 text-left"
           >
-            <h4 className="font-semibold text-[#38b6ff] mb-4 tracking-wider">COMPANY</h4>
+            <h4 className="font-semibold text-[#38b6ff] mb-4 tracking-wider">
+              COMPANY
+            </h4>
             <ul className="space-y-3 text-sm">
-              <li><a href="/" className="hover:text-white transition-colors">Home</a></li>
-              <li><a href="/About" className="hover:text-white transition-colors">About Us</a></li>
-              <li><a href="/Service" className="hover:text-white transition-colors">Services</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
+              <li>
+                <a href="/" className="hover:text-white transition-colors">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="/About" className="hover:text-white transition-colors">
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/Service"
+                  className="hover:text-white transition-colors"
+                >
+                  Services
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-white transition-colors">
+                  Blog
+                </a>
+              </li>
             </ul>
           </Motion.div>
 
@@ -151,20 +183,36 @@ const Footer = () => {
             viewport={{ once: true }}
             className="md:col-span-1 text-left"
           >
-            <h4 className="font-semibold text-[#38b6ff] mb-4 tracking-wider">SUPPORT</h4>
+            <h4 className="font-semibold text-[#38b6ff] mb-4 tracking-wider">
+              SUPPORT
+            </h4>
             <ul className="space-y-3 text-sm">
-              <li><a href="/PrivacyPolicy" className="hover:text-white transition-colors">Privacy Policy</a></li>
               <li>
-                <a 
-                  href={mapUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href="/PrivacyPolicy"
+                  className="hover:text-white transition-colors"
+                >
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a
+                  href={mapUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:text-white transition-colors"
                 >
                   Location
                 </a>
               </li>
-              <li><a href="/Contact" className="hover:text-white transition-colors">Contact Us</a></li>
+              <li>
+                <a
+                  href="/Contact"
+                  className="hover:text-white transition-colors"
+                >
+                  Contact Us
+                </a>
+              </li>
             </ul>
           </Motion.div>
 
@@ -176,12 +224,14 @@ const Footer = () => {
             viewport={{ once: true }}
             className="md:col-span-1"
           >
-            <h4 className="font-semibold text-[#38b6ff] mb-4 tracking-wider">STAY UPDATED</h4>
+            <h4 className="font-semibold text-[#38b6ff] mb-4 tracking-wider">
+              STAY UPDATED
+            </h4>
             <p className="text-sm mb-4">
               Subscribe to our newsletter for inspiration and special offers.
             </p>
-            <form 
-              onSubmit={handleSubmit} 
+            <form
+              onSubmit={handleSubmit}
               className="flex flex-col sm:flex-row items-stretch gap-3"
             >
               <input
@@ -201,7 +251,7 @@ const Footer = () => {
                            cursor-pointer hover:scale-105 transition-all disabled:opacity-70"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? 'Subscribing...' : 'Subscribe'}
+                {isSubmitting ? "Subscribing..." : "Subscribe"}
               </button>
             </form>
           </Motion.div>

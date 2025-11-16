@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import ContactDetails from "./ContactDetails";
 import EnquiryForm from "./EnquiryForm";
-import { motion as Motion } from "motion/react";
+import { motion as Motion } from "framer-motion";
 
 // ✅ Animated Accent Divider
 const AccentDivider = ({ align = "center" }) => {

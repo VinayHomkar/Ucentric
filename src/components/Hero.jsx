@@ -1,5 +1,5 @@
 import React from "react";
-import { motion as Motion} from "motion/react";
+import { motion as Motion } from "framer-motion";
 import backgroundVideo from "../assets/bg_video.mp4";
 
 if (typeof document !== "undefined") {

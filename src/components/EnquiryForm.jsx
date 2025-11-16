@@ -1,6 +1,6 @@
 import React, { useState, useRef, useCallback } from "react";
 import toast from "react-hot-toast";
-import { motion as Motion} from "motion/react";
+import { motion as Motion } from "framer-motion";
 
 // --- Reusable Glow Wrapper Component ---
 const GlowInputWrapper = ({ children, isFocused, className, inputRef }) => {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { motion as Motion} from "motion/react"; // Added back since motion is used
+import { motion as Motion } from "framer-motion";
 import assets from "../assets/assets";
 import ServiceCard from "./ServiceCard";
 
