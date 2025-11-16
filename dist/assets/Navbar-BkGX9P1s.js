@@ -1,4 +1,4 @@
-import{r as s,j as e,m as d,a as r}from"./index-DxbjjCF5.js";const x=()=>{const[o,t]=s.useState(!1),[n,l]=s.useState(!1);s.useEffect(()=>{const a=()=>l(window.scrollY>10);return window.addEventListener("scroll",a),()=>window.removeEventListener("scroll",a)},[]);const i=n?"bg-transparent backdrop-blur-none shadow-none":"bg-black shadow-md";return e.jsxs(d.div,{initial:{opacity:0,y:-50},animate:{opacity:1,y:0},transition:{duration:.6,ease:"easeOut"},className:`
+import{r as s,j as e,m as d,a as r}from"./index-BaVkGjGE.js";const x=()=>{const[o,t]=s.useState(!1),[n,l]=s.useState(!1);s.useEffect(()=>{const a=()=>l(window.scrollY>10);return window.addEventListener("scroll",a),()=>window.removeEventListener("scroll",a)},[]);const i=n?"bg-transparent backdrop-blur-none shadow-none":"bg-black shadow-md";return e.jsxs(d.div,{initial:{opacity:0,y:-50},animate:{opacity:1,y:0},transition:{duration:.6,ease:"easeOut"},className:`
         fixed top-0 left-0 w-full z-50
         flex justify-between items-center
         px-6 sm:px-10 lg:px-16 py-4
